@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Site</title>
+    <link rel="stylesheet" href="weather.css">
+    <script src="https://kit.fontawesome.com/8e141485d2.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <section class ="allbody">
+
+        <div class="schdiv">
+            <input id="inp" type="text" placeholder="Enter your city">
+            <button id="btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div>
+        <div class="error">
+            <p id="pp">City name not found</p>
+        </div>
+
+        <div class="cloudimg">
+            <img src="mist.png" id="im">
+        </div>
+        <div class="cloudhead">
+            <h2 id="read">0°C</h2>
+            <p id="city">City Name</p>
+        </div>
+        <div class="aboutreadings">
+           <div class="percentage">
+            <img id="humi" src="humidity.png">
+            <div class="pertext">
+                <p class="txt1" id="humidity">0%</p>
+                <p class="txt2">Humidity</p>
+            </div>
+           </div>
+
+           <div class="percentage">
+            <img id="wind" src="wind.png">
+            <div class="pertext">
+                <p class="txt1" id="windy">0km/h</p>
+                <p class="txt2">Wind Speed</p>
+            </div>
+           </div>
+
+        </div>
+
+    </section>
+
+    <script>
+
+        const apikey = 'e1a8da22a1f37e9d2828d44ab2e4bd89'
+        const apiurl = `https://api.openweathermap.org/data/2.5/weather?units=metric&appid=${apikey}&q=`
+
+        const inputval = document.getElementById("inp")
+        const btn = document.getElementById("btn")
+        const weather = document.getElementById("im")
+       
+        async function fetchapi(city) {
+            let myapi = await fetch(apiurl + city)
+            let data = await myapi.json()
+            
+
+            if(myapi.status == 404) {
+                document.getElementById("read").innerHTML = "0°C"
+                document.getElementById("city").innerHTML = "City Not Found"
+                document.getElementById("humidity").innerHTML =  "0%"
+                document.getElementById("windy").innerHTML = "0km/h"
+
+                document.getElementById("pp").style.display = "block"
+            }
+            else {
+            document.getElementById("read").innerHTML = Math.round(data.main.temp ) + "°C"
+            document.getElementById("city").innerHTML = data.name
+            document.getElementById("humidity").innerHTML = data.main.humidity + "%"
+            document.getElementById("windy").innerHTML = data.wind.speed + "km/h"
+
+            document.getElementById("pp").style.display = "none"
+            }
+
+            if(data.weather[0].main == "Clouds") {
+                weather.src = "clouds.png"
+            }
+            else if(data.weather[0].main == "Rain") {
+                weather.src == "rain.png"
+            }
+            else if(data.weather[0].main == "Snow") {
+                weather.src = "snow.png"
+            }
+            else if(data.weather[0].main == "Mist") {
+                weather.src = "mist.png"
+            }
+            else if (data.weather[0].main == "Humidity") {
+                weather.src = "humidity.png"
+            }
+            else if(data.weather[0].main == "Haze") {
+                weather.src = "drizzle.png"
+            }
+            else if(data.weather[0].main == "Clear") {
+                weather.src = "clear.png"
+            }
+
+        }
+        
+        btn.addEventListener("click", () => {
+            fetchapi(inputval.value)
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,140 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background : url(clouds.jpg)  no-repeat ;
+    background-size: cover;
+}
+.allbody {
+    width: 50vw;
+    height: 630px;
+    margin: auto;
+    padding: 10px;
+    margin-top: 50px;
+    background-color: black transparent;
+    box-shadow: 0 0 10px  black;
+    
+}
+.schdiv {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;    
+}
+.schdiv #inp {
+    border: 0;
+    padding: 10px;
+    font-size: 15px;
+    border-radius: 50px;
+    margin-left: 15px;
+    transition: .5s ease-in;
+}
+#inp:focus {
+    background-color: #fcb43c;
+}
+.schdiv #btn {
+    margin-left: 5px;
+    background-color: white;
+    position: relative;
+    width: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: .5s ease-in;
+}
+#btn:hover {
+    background-color: #fcb43c;
+}
+.error p {
+    color: red;
+    text-align: center;
+    display: none;
+}
+.schdiv #btn i {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.cloudimg img {
+  margin: auto;
+  display: block;
+}
+.cloudhead {
+    text-align: center;
+    white-space: nowrap;
+}
+.cloudhead h2 {
+    font-size: 80px;
+}
+.cloudhead p {
+    font-size: 40px;
+    color: #fcb43c;
+    text-shadow:  0 0 1px black;
+}
+.aboutreadings {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 25px;
+}
+
+.percentage img {
+    width: 100px;
+    height: 80px;
+}
+.percentage .pertext {
+    text-align: center;
+    padding-top: 10px;
+}
+.pertext .txt1 {
+    font-size: 25px;
+    font-weight: bold
+}
+.pertext .txt2 {
+    font-size: 18px;
+}
+@media  screen and (max-width :760px ) and (min-width : 545px) {
+    .percentage img {
+        width: 80px;
+        height: 70px;
+    }
+    .pertext .txt1 {
+        font-size: 20px;
+    }
+    .pertext .txt2 {
+        font-size: 16px;
+    }
+    .cloudhead h2 {
+        font-size: 70px;
+    }
+    .cloudimg img {
+        width: 200px;
+    }
+}
+@media screen and (max-width :545px) {
+    .allbody {
+        width: 100vw;
+        box-shadow: 0 0 0;
+    }
+    .cloudimg img {
+        width: 180px;
+    }
+    .schdiv #inp {
+        font-size: 15px;
+        border: 0.5px solid black;
+    }
+    .percentage img {
+        width: 80px;
+        height: 70px;
+    }
+    .pertext .txt1 {
+        font-size: 20px;
+    }
+    .pertext .txt2 {
+        font-size: 16px;
+    }
+    .cloudhead h2 {
+        font-size: 70px;
+    }
+}
