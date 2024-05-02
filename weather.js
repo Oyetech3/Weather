@@ -1,4 +1,4 @@
-const apikey = '***'
+const apikey = 'e1a8da22a1f37e9d2828d44ab2e4bd89'
 const apiurl = `https://api.openweathermap.org/data/2.5/weather?units=metric&appid=${apikey}&q=`
 
 const inputval = document.getElementById("inp")
